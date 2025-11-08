@@ -14,22 +14,19 @@ describe('PostsService', () => {
 
   it('should add a new post', () => {
     // реализуйте тест-кейс
-    const createdPost = postsService.create(post);
+    const newPost = postsService.create({text: 'New post'});
     const posts = postsService.getPosts();
     
-    expect(createdPost).toHaveProperty('id');
-    expect(createdPost).toHaveProperty('date');
-    expect(createdPost.text).toBe(post.text);
-
-    expect(posts).toContainEqual(createdPost);
+    expect(newPost).toHaveProperty('id');
+    expect(newPost).toHaveProperty('date');
+    expect(newPost.text).toBe('New post');
+    expect(posts).toContainEqual(newPost);
   });
 
   it('should find a post', () => {
     // реализуйте тест-кейс
-    const createdPost = postsService.create(post);
-
+    const createdPost = postsService.create({text: 'New post'});
     const foundPost = postsService.find(createdPost.id);
-
     expect(foundPost).toEqual(createdPost);
   });
 });
